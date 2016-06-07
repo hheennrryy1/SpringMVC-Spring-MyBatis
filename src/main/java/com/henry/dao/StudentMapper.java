@@ -1,5 +1,7 @@
 package com.henry.dao;
 
+import java.util.List;
+
 import com.henry.entity.Student;
 
 public interface StudentMapper {
@@ -10,7 +12,9 @@ public interface StudentMapper {
     int insertSelective(Student record);
 
     Student selectByPrimaryKey(Integer id);
-
+    
+    List<Student> getAll();
+    
     int updateByPrimaryKeySelective(Student record);
 
     int updateByPrimaryKey(Student record);

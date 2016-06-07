@@ -6,17 +6,10 @@
 <script src="js/jquery.min.js"></script>
 <script>
 	$(document).ready(function() {
-		$("a").click(function () {
-			args = {};
-			$.post("hello", args, function(student){
-					alert(student.score[0].student.name);
-				});
-		});
 	})
 </script>
 </head>
 <body>
-	<a href="#">hello</a>
-	<span id="span1"></span>
+	<a href="listStudent">listStudent</a>
 </body>
 </html>

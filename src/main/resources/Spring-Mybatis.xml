@@ -12,7 +12,7 @@
 	<context:property-placeholder location="classpath:jdbc.properties" />  
 	
 	<!-- c3p0数据库连接池 -->
-	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">  
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
 		<property name="driverClass" value="com.mysql.jdbc.Driver"/>  
 		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/mybatis?characterEncoding=UTF-8"/>  
 		<property name="user" value="root"/>  
@@ -30,11 +30,14 @@
 		<property name="dataSource" ref="dataSource"/>
 		<property name="mapperLocations" value="classpath:com/henry/mapping/*.xml" />
 	</bean>
-	<!-- 此处扫描的是Mapper接口 -->  
+	
+	<!-- 此处扫描的是Mapper接口 ，不用再加@Repository  -->  
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="com.henry.dao" />
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 	</bean>
+	
+	
 	
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
@@ -65,5 +68,5 @@
 	<aop:config>
 		<aop:pointcut id="transactionPointcut" expression="execution(* com.henry.service..*.*(..))" />
 		<aop:advisor pointcut-ref="transactionPointcut" advice-ref="transactionAdvice" />
-	</aop:config>	
+	</aop:config>
 </beans>

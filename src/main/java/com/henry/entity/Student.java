@@ -1,35 +1,26 @@
 package com.henry.entity;
 
 import java.util.Date;
-import java.util.List;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 public class Student {
-	
     private Integer id;
 
     private String name;
-
-    public Student(Integer id, String name, Date birthday, List<Score> score) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.birthday = birthday;
-		this.score = score;
-	}
-
-	private Date birthday;
     
-    private List<Score> score;
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    private Date birthday;
+    
+    public Student(){};
+    
+    public Student(Integer id, String name, Date birthday) {
+    	this.id = id;
+    	this.name = name;
+    	this.birthday = birthday;
+    }
 
-    public List<Score> getscore() {
-		return score;
-	}
-
-	public void setscore(List<Score> score) {
-		this.score = score;
-	}
-
-	public Integer getId() {
+    public Integer getId() {
         return id;
     }
 
