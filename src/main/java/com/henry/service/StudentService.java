@@ -21,4 +21,16 @@ public class StudentService {
 	public List<Student> getAll() {
 		return mapper.getAll();
 	}
+	
+	public void delete(Integer id) {
+		mapper.deleteByPrimaryKey(id);
+	}
+	
+	public Student selectByPrimaryKey(Integer id) {
+		return mapper.selectByPrimaryKey(id);
+	}
+	
+	public void updateByPrimaryKeySelective(Student student) {
+		mapper.updateByPrimaryKeySelective(student);
+	}
 }

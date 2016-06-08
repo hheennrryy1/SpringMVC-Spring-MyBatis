@@ -6,6 +6,7 @@ import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -31,9 +32,29 @@ public class StudentController {
 		return "input";
 	}
 	
-	@RequestMapping("/addUser")
-	public String addUser(Student student) {
+	@RequestMapping("/addStudent")
+	public String addStudent(Student student) {
 		studentService.insert(student);
+		return "redirect:/listStudent";
+	}
+	
+	@RequestMapping(value="/deleteStudent")
+	public String deleteStudent(Integer id) {
+		studentService.delete(id);
+		return "redirect:/listStudent";
+	}
+	
+	@RequestMapping(value="/updateStudentUI")
+	public ModelAndView updateUserUI(Integer id, ModelAndView mav) {
+		mav.setViewName("updateStudent");
+		Student student = studentService.selectByPrimaryKey(id);
+		mav.addObject("student", student);
+		return mav;
+	}
+	
+	@RequestMapping(value="/updateStudent")
+	public String updateStudent(Student student) {
+		studentService.updateByPrimaryKeySelective(student);
 		return "redirect:/listStudent";
 	}
 }

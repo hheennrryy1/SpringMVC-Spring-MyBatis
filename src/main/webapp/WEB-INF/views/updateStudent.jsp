@@ -7,12 +7,13 @@ String path = request.getContextPath();
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>input</title>
+<title>update</title>
 </head>
 <body>
-	<form action="<%=path%>/addStudent" method="POST">
-		姓名:<input type="text" name="name"/> <br />
-		生日:<input type="text" name="birthday"/>
+	<form action="<%=path%>/updateStudent" method="POST">
+		<input type="hidden" value="${student.id}" name="id"/>
+		姓名：<input type="text" value="${student.name}" name="name"/>
+		生日：<input type="text" value="${student.birthday}" name="birthday"/>
 		<input type="submit" value="提交"/>
 	</form>
 </body>
