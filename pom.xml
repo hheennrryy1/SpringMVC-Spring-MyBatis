@@ -104,6 +104,13 @@
 		<version>0.2.11</version>
 	</dependency>
 	
+	<!-- http://mvnrepository.com/artifact/com.alibaba/druid -->
+	<dependency>
+	    <groupId>com.alibaba</groupId>
+	    <artifactId>druid</artifactId>
+	    <version>1.0.20</version>
+	</dependency>
+	
 	<!-- junit -->
 	<dependency>
 		<groupId>junit</groupId>

@@ -9,12 +9,10 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
 	
-	<context:property-placeholder location="classpath:jdbc.properties" />  
-	
 	<!-- c3p0数据库连接池 -->
-	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+ 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
 		<property name="driverClass" value="com.mysql.jdbc.Driver"/>  
-		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/mybatis?characterEncoding=UTF-8"/>  
+		<property name="jdbcUrl" value="jdbc:mysql://127.0.0.1:3306/mybatis?useUnicode=true&amp;characterEncoding=utf8"/>  
 		<property name="user" value="root"/>  
 		<property name="password" value="root"/>
 		<property name="maxPoolSize" value="150"/>  
@@ -24,6 +22,13 @@
 		<property name="acquireIncrement" value="1"/>  
 		<property name="idleConnectionTestPeriod" value="60"/>  
 	</bean>  
+	
+<!-- 	    配置数据源
+	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+		<property name="url" value="${url}"></property>
+		<property name="username" value="${username}"></property>
+		<property name="password" value="${password}"></property>
+    </bean>  -->
 	
 	<!-- 创建SqlSessionFactory，同时指定数据源 --> 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">

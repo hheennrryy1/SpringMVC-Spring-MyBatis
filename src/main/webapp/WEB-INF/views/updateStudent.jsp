@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%
 String path = request.getContextPath();
 %>
@@ -13,7 +14,7 @@ String path = request.getContextPath();
 	<form action="<%=path%>/updateStudent" method="POST">
 		<input type="hidden" value="${student.id}" name="id"/>
 		姓名：<input type="text" value="${student.name}" name="name"/>
-		生日：<input type="text" value="${student.birthday}" name="birthday"/>
+		生日：<input type="text" value="<fmt:formatDate pattern="yyyy-MM-dd" value="${student.birthday}" />" name="birthday"/>
 		<input type="submit" value="提交"/>
 	</form>
 </body>

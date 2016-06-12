@@ -4,6 +4,7 @@ package com.henry.controller;
 import java.util.List;
 import java.util.UUID;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +16,8 @@ import com.henry.service.StudentService;
 
 @Controller
 public class StudentController {
+	
+	Logger logger = Logger.getLogger(StudentController.class);
 	
 	@Autowired
 	private StudentService studentService;
@@ -34,6 +37,7 @@ public class StudentController {
 	
 	@RequestMapping("/addStudent")
 	public String addStudent(Student student) {
+		logger.info(student.getBirthday());
 		studentService.insert(student);
 		return "redirect:/listStudent";
 	}
