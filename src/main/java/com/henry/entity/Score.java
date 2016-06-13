@@ -16,6 +16,8 @@ public class Score {
 	public void setStudent(Student student) {
 		this.student = student;
 	}
+	
+	public Score(){};
 
 	public Score(Integer sId, Integer score, String subject, Student student) {
 		super();

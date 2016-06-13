@@ -22,6 +22,10 @@ public class StudentService {
 		return mapper.getAll();
 	}
 	
+	public List<Student> getStudentAndScore() {
+		return mapper.getStudentAndScore();
+	}
+	
 	public void delete(Integer id) {
 		mapper.deleteByPrimaryKey(id);
 	}

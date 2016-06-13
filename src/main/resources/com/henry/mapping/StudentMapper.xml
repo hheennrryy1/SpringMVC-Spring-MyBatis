@@ -7,10 +7,21 @@
     <result column="birthday" property="birthday" jdbcType="DATE" />
   </resultMap>
   
+  <resultMap id="StudentAndScore" type="com.henry.entity.Student" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="birthday" property="birthday" jdbcType="DATE" />
+    <collection property="scores" ofType="com.henry.entity.Score">
+   		<id column="s_id" property="sId"/>
+		<result column="score" property="score"/>
+		<result column="subject" property="subject"/>
+    </collection>
+  </resultMap>
+  
   <sql id="Base_Column_List" >
     id, name, birthday
   </sql>
-  
+	  
   <select id="selectByPrimaryKey" resultType="com.henry.entity.Student" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -22,6 +33,10 @@
 	select id, name, birthday from student
   </select>
   
+  <select id="getStudentAndScore" resultMap="StudentAndScore">
+	select st.*,sc.* from student st join score sc on st.id = sc.student_id 
+  </select>
+	  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from student
     where id = #{id,jdbcType=INTEGER}

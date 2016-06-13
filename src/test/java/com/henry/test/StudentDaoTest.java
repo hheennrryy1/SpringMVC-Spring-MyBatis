@@ -1,6 +1,7 @@
 package com.henry.test;
 
 import java.util.Date;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -30,15 +31,7 @@ public class StudentDaoTest {
 	@Autowired
 	StudentMapper mapper;
 	
-	
 	@Test
-	public void getAll() {
-		service.getAll();
-	}
-	
-	
-	@Test
-	@Ignore
 	public void insert() {
 		SqlSession session = sqlSessionFactory.openSession();
 		Student student = new Student(5, "ry", new Date());
@@ -67,4 +60,13 @@ public class StudentDaoTest {
 		session.close();
 	}
 	
+	@Test
+	@Ignore
+	public void getStudentAndScore() {
+		SqlSession session = sqlSessionFactory.openSession();
+		List<Student> list = mapper.getStudentAndScore();
+		System.out.println(list.get(0).getScores().get(1).getSubject());
+		session.commit();
+		session.close();
+	}
 }

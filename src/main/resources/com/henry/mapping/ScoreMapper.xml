@@ -5,8 +5,19 @@
     <id column="s_id" property="sId" jdbcType="INTEGER" />
     <result column="score" property="score" jdbcType="INTEGER" />
     <result column="subject" property="subject" jdbcType="VARCHAR" />
-    <result column="student_id" property="studentId" jdbcType="INTEGER" />
   </resultMap>
+  
+   <resultMap type="com.henry.entity.Score" id="ScoreAndStudent">
+  	<id column="s_id" property="sId" jdbcType="INTEGER" />
+    <result column="score" property="score" jdbcType="INTEGER" />
+    <result column="subject" property="subject" jdbcType="VARCHAR" />
+  	<association property="student" javaType="com.henry.entity.Student">
+	  <result column="id" property="id" jdbcType="INTEGER" />
+	  <result column="name" property="name" jdbcType="VARCHAR" />
+	  <result column="birthday" property="birthday" jdbcType="DATE" />
+    </association>
+  </resultMap>
+  
   <sql id="Base_Column_List" >
     s_id, score, subject, student_id
   </sql>
@@ -16,6 +27,13 @@
     from score
     where s_id = #{sId,jdbcType=INTEGER}
   </select>
+  
+   <select id="getSocreAndStudent" resultMap="ScoreAndStudent">
+	select st.id, st.name,sc.score, sc.subject 
+	from student st,score sc where
+	st.id = sc.student_id
+  </select> 
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from score
     where s_id = #{sId,jdbcType=INTEGER}

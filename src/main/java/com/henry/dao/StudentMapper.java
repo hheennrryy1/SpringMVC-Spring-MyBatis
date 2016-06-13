@@ -15,6 +15,8 @@ public interface StudentMapper {
     
     List<Student> getAll();
     
+    List<Student> getStudentAndScore();
+    
     int updateByPrimaryKeySelective(Student record);
 
     int updateByPrimaryKey(Student record);

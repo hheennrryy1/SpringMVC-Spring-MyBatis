@@ -1,5 +1,7 @@
 package com.henry.dao;
 
+import java.util.List;
+
 import com.henry.entity.Score;
 
 public interface ScoreMapper {
@@ -10,6 +12,8 @@ public interface ScoreMapper {
     int insertSelective(Score record);
 
     Score selectByPrimaryKey(Integer sId);
+    
+    List<Score> getSocreAndStudent();
 
     int updateByPrimaryKeySelective(Score record);
 

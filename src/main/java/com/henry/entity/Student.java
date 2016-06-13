@@ -1,6 +1,7 @@
 package com.henry.entity;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -12,7 +13,17 @@ public class Student {
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date birthday;
     
-    public Student(){};
+    private List<Score> scores;
+    
+    public List<Score> getScores() {
+		return scores;
+	}
+
+	public void setScores(List<Score> scores) {
+		this.scores = scores;
+	}
+
+	public Student(){};
     
     public Student(Integer id, String name, Date birthday) {
     	this.id = id;
