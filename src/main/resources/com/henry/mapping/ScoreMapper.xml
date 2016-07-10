@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.henry.dao.ScoreMapper" >
-  <resultMap id="BaseResultMap" type="com.henry.entity.Score" >
+  <resultMap id="BaseResultMap" type="Score" >
     <id column="s_id" property="sId" jdbcType="INTEGER" />
     <result column="score" property="score" jdbcType="INTEGER" />
     <result column="subject" property="subject" jdbcType="VARCHAR" />
   </resultMap>
   
-   <resultMap type="com.henry.entity.Score" id="ScoreAndStudent">
+   <resultMap type="Score" id="ScoreAndStudent">
   	<id column="s_id" property="sId" jdbcType="INTEGER" />
     <result column="score" property="score" jdbcType="INTEGER" />
     <result column="subject" property="subject" jdbcType="VARCHAR" />
@@ -38,13 +38,13 @@
     delete from score
     where s_id = #{sId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.henry.entity.Score" >
+  <insert id="insert" parameterType="Score" >
     insert into score (s_id, score, subject, 
       student_id)
     values (#{sId,jdbcType=INTEGER}, #{score,jdbcType=INTEGER}, #{subject,jdbcType=VARCHAR}, 
       #{studentId,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.henry.entity.Score" >
+  <insert id="insertSelective" parameterType="Score" >
     insert into score
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="sId != null" >
@@ -75,7 +75,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.henry.entity.Score" >
+  <update id="updateByPrimaryKeySelective" parameterType="Score" >
     update score
     <set >
       <if test="score != null" >
@@ -90,7 +90,7 @@
     </set>
     where s_id = #{sId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.henry.entity.Score" >
+  <update id="updateByPrimaryKey" parameterType="Score" >
     update score
     set score = #{score,jdbcType=INTEGER},
       subject = #{subject,jdbcType=VARCHAR},

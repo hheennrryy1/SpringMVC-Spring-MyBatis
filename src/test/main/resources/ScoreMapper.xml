@@ -5,7 +5,6 @@
     <id column="s_id" property="sId" jdbcType="INTEGER" />
     <result column="score" property="score" jdbcType="INTEGER" />
     <result column="subject" property="subject" jdbcType="VARCHAR" />
-    <result column="student_id" property="studentId" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
     s_id, score, subject, student_id

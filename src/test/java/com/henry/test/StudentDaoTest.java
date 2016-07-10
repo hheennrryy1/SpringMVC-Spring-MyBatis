@@ -32,6 +32,7 @@ public class StudentDaoTest {
 	StudentMapper mapper;
 	
 	@Test
+	@Ignore
 	public void insert() {
 		SqlSession session = sqlSessionFactory.openSession();
 		Student student = new Student(5, "ry", new Date());
@@ -41,7 +42,6 @@ public class StudentDaoTest {
 	}
 	
 	@Test
-	@Ignore
 	public void select() {
 		SqlSession session = sqlSessionFactory.openSession();
 		Student student = mapper.selectByPrimaryKey(new Integer(1));

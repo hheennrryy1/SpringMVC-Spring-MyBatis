@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.henry.dao.StudentMapper">
-  <resultMap id="BaseResultMap" type="com.henry.entity.Student" >
+  <resultMap id="BaseResultMap" type="Student" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="birthday" property="birthday" jdbcType="DATE" />
   </resultMap>
   
-  <resultMap id="StudentAndScore" type="com.henry.entity.Student" >
+  <resultMap id="StudentAndScore" type="Student" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="birthday" property="birthday" jdbcType="DATE" />
@@ -22,7 +22,7 @@
     id, name, birthday
   </sql>
 	  
-  <select id="selectByPrimaryKey" resultType="com.henry.entity.Student" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultType="Student" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from student
@@ -41,13 +41,13 @@
     delete from student
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.henry.entity.Student" >
+  <insert id="insert" parameterType="Student" >
     insert into student (id, name, birthday
       )
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{birthday,jdbcType=DATE}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.henry.entity.Student" >
+  <insert id="insertSelective" parameterType="Student" >
     insert into student
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -72,7 +72,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.henry.entity.Student" >
+  <update id="updateByPrimaryKeySelective" parameterType="Student" >
     update student
     <set >
       <if test="name != null" >
@@ -84,7 +84,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.henry.entity.Student" >
+  <update id="updateByPrimaryKey" parameterType="Student" >
     update student
     set name = #{name,jdbcType=VARCHAR},
       birthday = #{birthday,jdbcType=DATE}
